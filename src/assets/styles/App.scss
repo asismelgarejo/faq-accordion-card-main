@@ -1,0 +1,93 @@
+@import './variables.scss';
+
+@mixin makeDimensionSquare($size) {
+  height: $size;
+  width: $size;
+}
+
+body{
+  margin: 0;
+}
+*{
+  box-sizing: border-box;
+}
+dd{
+  margin: 0;
+}
+figure{
+  margin: 0;
+  padding: 0;
+}
+#container{
+  padding: 3em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to bottom,$soft-violet,$soft-blue);
+}
+.card{
+  font-family: $family;
+  width: 850px;
+  height: fit-content;
+  background: 
+  url(../images/illustration-woman-online-desktop.svg) no-repeat -15%,
+    url(../images/bg-pattern-desktop.svg) no-repeat -67%,
+    $color-white
+  ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: 50%, 560px;
+  border-radius: 1em;
+  padding: 2em;
+  &__background{
+    margin-left: -19%;
+    margin-top: 12%;
+  }
+  &__questions{
+    width: 50%;
+    margin-left: auto;
+  }
+  &__questions h1{
+    text-transform: uppercase;
+  }
+  &__questions dt{
+    font-weight: $weight1;
+    padding: 1em 0;
+    border-bottom: thin solid $light-grayish-blue;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__questions dt:hover{
+    color: $soft-red;
+  }
+  &__questions dd{
+    height: 0;
+    overflow: hidden;
+    transition: height .2s ease-in;
+    font-size: .9em;
+  }
+  &__questions .arrow-icon{
+    margin-right: .5em;
+    margin-left: auto;
+  }
+}
+.arrow-icon{
+  display: inline-block;
+  margin-left: auto;
+  width: .7em;
+  transition: all .2s ease-in;
+}
+
+.folded{
+  height: 90px !important;
+}
+.rotate{
+  transform: rotate(180deg) !important;
+}
+.bold{
+  font-weight: $weight2;
+}
