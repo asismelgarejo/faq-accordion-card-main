@@ -3,6 +3,23 @@ import './assets/styles/App.scss';
 import FloatedCube from './assets/images/illustration-box-desktop.svg';
 import Arrow from './assets/images/icon-arrow-down.svg';
 
+const Question = ({folded, answer, question,i, onFold})=>{
+  return(
+    <div>
+      <dt 
+        onClick={()=>{onFold(folded,i)}} 
+        className={folded? "bold": ""}>
+        {question}
+        <img className={folded? "arrow-icon rotate": "arrow-icon"} 
+        src={Arrow} alt="arrow icon"/>
+      </dt>
+      <dd className={folded? "folded": ""}>
+        <p>{answer}</p>
+      </dd>
+    </div>
+  )
+}
+
 class App extends React.Component{
   state = {
     questions: [
@@ -34,12 +51,13 @@ class App extends React.Component{
     ]
   }
 
-  onFold = (i) =>()=>{
+  onFold = (folded,i) =>{
     const questions = [...this.state.questions].map((q, index)=>{
       if(index===i){
-        q.folded = q.folded ? false: true;
+        q.folded = folded ? false : true;
         return q;
       }else{
+        q.folded = false;
         return q;
       }
     })
@@ -58,12 +76,13 @@ class App extends React.Component{
           <dl>
             {
               this.state.questions.map(({question, answer, folded}, i)=>(
-              <div key={i}>
-                <dt onClick={this.onFold(i)} className={folded? "bold": ""}>{question}<img className={folded? "arrow-icon rotate": "arrow-icon"} src={Arrow} alt="arrow icon"/></dt>
-                <dd className={folded? "folded": ""}>
-                  <p>{answer}</p>
-                </dd>
-              </div>
+                <Question key={i}
+                  question={question}
+                  answer={answer}
+                  folded={folded}
+                  onFold={this.onFold}
+                  i={i}
+                />
               ))
             }
           </dl>

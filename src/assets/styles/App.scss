@@ -29,8 +29,8 @@ figure{
 }
 .card{
   font-family: $family;
-  width: 850px;
-  height: fit-content;
+  width: 800px;
+  min-height: 450px;
   background: 
   url(../images/illustration-woman-online-desktop.svg) no-repeat -15%,
     url(../images/bg-pattern-desktop.svg) no-repeat -67%,
@@ -41,7 +41,7 @@ figure{
   align-items: center;
   background-size: 50%, 560px;
   border-radius: 1em;
-  padding: 2em;
+  padding: 0 2em;
   &__background{
     margin-left: -19%;
     margin-top: 12%;
